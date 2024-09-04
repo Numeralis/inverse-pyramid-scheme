@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-of*=s%kr@lly2*ab(hqoh!_pn3++h(ywr3b4dlqhydp+%l8_bj
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1", "http://meinhard-christian-inversepyramidscheme.pbp.cs.ui.ac.id"]
+ALLOWED_HOSTS = ["localhost", "127.0.0.1", "meinhard-christian-inversepyramidscheme.pbp.cs.ui.ac.id"]
 
 
 # Application definition
