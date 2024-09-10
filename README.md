@@ -1,6 +1,7 @@
 # Tugas 2
 
 Visit website using [this](http:/meinhard-christian-inversepyramidscheme.pbp.cs.ui.ac.id)
+
 Checklist:
 
 - Membuat sebuah proyek Django baru
