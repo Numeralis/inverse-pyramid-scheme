@@ -1,11 +1,14 @@
 from django.shortcuts import render
+from .models import Product
 
 # Create your views here.
-def show_main(request):
+def show_app(request):
+    products = Product.objects.all()
     context = {
-        'npm' : '2306123456',
-        'name': 'Pak Bepe',
-        'class': 'PBP E'
+        'app'       : 'main',
+        'name'      : 'Meinhard Christian',
+        'class'     : 'PBP E',
+        'products'  : products
     }
 
     return render(request, "main.html", context)
