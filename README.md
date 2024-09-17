@@ -3,6 +3,7 @@
 ## Tugas 2
 
 Visit website using [this](http:/meinhard-christian-inversepyramidscheme.pbp.cs.ui.ac.id)
+
 Checklist:
 
 - Membuat sebuah proyek Django baru
@@ -38,7 +39,7 @@ Menggunakan VSCODE saja
 - Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
 OK
 
--Buatlah bagan yang berisi request client ke web aplikasi berbasis Django beserta responnya dan jelaskan pada bagan tersebut kaitan antara urls.py, views.py, models.py, dan berkas html.
+- Buatlah bagan yang berisi request client ke web aplikasi berbasis Django beserta responnya dan jelaskan pada bagan tersebut kaitan antara urls.py, views.py, models.py, dan berkas html.
 Di atas saya sudah membuat models > views > urls > html
 Kemudian saat client request ke [127.0.0.1:8000](http://127.0.0.1:8000/), selama server jalan webpage akan menampilkan dengan benar
 models.py mendefinisikan object apa saja yang dapat dimasukan dan dibaca ke database (harus migrate setiap kali ada perubahan)
@@ -47,13 +48,13 @@ models dan html disambung oleh view, view membaca data yang direquest dan meng-r
 di antara view dan client, urls.py memetakan view ke dalam URL, request user dikirim melalui URL ini dan menerima respons dari view
 Django memiliki server untuk web-aplikasi skala besar yang menjadi intermediary antara URL, user dan view.
 
--Jelaskan fungsi git dalam pengembangan perangkat lunak!
+- Jelaskan fungsi git dalam pengembangan perangkat lunak!
 Mengontrol versi, Membuat programmer lebih akrab dengan mengunnakan commands, remote storage, collaboration (branching, merging, pull request, etc), publikasi program  
 
--Menurut Anda, dari semua framework yang ada, mengapa framework Django dijadikan permulaan pembelajaran pengembangan perangkat lunak?
+- Menurut Anda, dari semua framework yang ada, mengapa framework Django dijadikan permulaan pembelajaran pengembangan perangkat lunak?
 Python bahasa paling sederhana, html juga sederhana, perangkat lunak tidak terlalu berat di komputasi jadi python tidak bermasalah, Django menunjukan dan menggunakan bagian back-end (bukan seperti situs yang sudah ada interpreter contohnya) namun banyak hal sudah diotomasikan jadi lebih sederhana.
 
--Mengapa model pada Django disebut sebagai ORM?
+- Mengapa model pada Django disebut sebagai ORM?
 Karena cara Django berinteraksi dengan database dimodelkan seperti OOP. Setiap data dalam databse sql adalah object yang didefinisikan dalam models (dan kemudian di migrate). Jenis object (class model) dipisahkan menjadi tabel berbeda, dan diakses melalui cara berbeda. User dengan administrator privilege dapat membuat, membaca, mengubah dan menghapus data dalam database. Dan filenya encrypted jadi ada lapisan keamanan juga untuk data pribadi.
 
 ## Tugas 3
