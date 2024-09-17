@@ -84,6 +84,10 @@ Company policies, mottos and products by <strong>ChatGPT</strong></p>
 </p>
 <p>There is nothing here...</p>
 
+<a href="{% url 'main:create_product_entry' %}">
+    <button>Add New Product Entry</button>
+</a>
+
 <h2>Our Products!</h2>
 <ul>
     {% for product in products %}

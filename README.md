@@ -1,4 +1,6 @@
-# Tugas 2
+# Checklist Questions
+
+## Tugas 2
 
 Visit website using [this](http:/meinhard-christian-inversepyramidscheme.pbp.cs.ui.ac.id)
 Checklist:
@@ -53,3 +55,18 @@ Python bahasa paling sederhana, html juga sederhana, perangkat lunak tidak terla
 
 -Mengapa model pada Django disebut sebagai ORM?
 Karena cara Django berinteraksi dengan database dimodelkan seperti OOP. Setiap data dalam databse sql adalah object yang didefinisikan dalam models (dan kemudian di migrate). Jenis object (class model) dipisahkan menjadi tabel berbeda, dan diakses melalui cara berbeda. User dengan administrator privilege dapat membuat, membaca, mengubah dan menghapus data dalam database. Dan filenya encrypted jadi ada lapisan keamanan juga untuk data pribadi.
+
+## Tugas 3
+
+-Jelaskan mengapa kita memerlukan data delivery dalam pengimplementasian sebuah platform? --> Jika semua orang menyimpan data dalam bentuk text atau binary, data menjadi sulit untuk digunakan karena setiap programmer menyimpan data menggunakan format berbeda, untuk itu, proses perubahan data mentah menjadi bentuk/format (serialization format) yang digunakan secara umum (Proses yang disebutkan serialization). Keunggulan dari menggunakan serialization format adalah ada banyak library yang membantu proses serialization, deserialization, encryption dan decryption untuk format serialization yang populer.
+
+-Menurutmu, mana yang lebih baik antara XML dan JSON? Mengapa JSON lebih populer dibandingkan XML? --> Yang mana yang lebih baik tergantung pada jenis data yang ingin disimpan. JSON lebih populer karena lebih human-readable (yang membuatnya mudah untuk diedit secara langsung), tetapi XML memiliki kemampuan penyesuaian/customizability yang lebih tinggi (dengan cara attribut tag daripada key JSON). XML juga lebih efisien jika jenis data yang disimpan lebih rumit.
+
+-Jelaskan fungsi dari method is_valid() pada form Django dan mengapa kita membutuhkan method tersebut? --> POST adalah jenis request yang mengirimkan data ke server, is_valid() adalah metode yang mencari keberadaan error dalam pengisian form (seperti "please fill out this field" atau "This answer is required"), ini memastikan form yang nanti di save() sudah terisi dengan benar.
+
+-Mengapa kita membutuhkan csrf_token saat membuat form di Django? Apa yang dapat terjadi jika kita tidak menambahkan csrf_token pada form Django? Bagaimana hal tersebut dapat dimanfaatkan oleh penyerang? --> csfr (Cross-Site Request Forgery), usatu token yang random-generated tiap sesi dibutuhkan untuk memastikan apakah request yang dikirim oleh suatu user benar-benar adalah request dari user dan bukan dari penyerang, jika form tidak menggunakan token ini, query dari hacker (yang mungkin dari link jahat yang dikirim ke user) tidak bisa dibedakan dengan query benaran dari user jadi server menganggapnya sebagai respons dari user. Hal ini dimanfaatkan oleh penyerang untuk query seperti query transfer uang, query ganti password, atau dalam kasus form ini, mengisi dan submit form user- penyerang dapat memanipulasikan sesi user tanpa mengetahui password/login.
+
+![show_xml](image-2.png)
+![show_xml_by_id](image-3.png)
+![show_json](image.png)
+![show_json_by_id](image-1.png)
