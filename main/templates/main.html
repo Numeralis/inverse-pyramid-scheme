@@ -85,7 +85,7 @@
         </a>
     </header>
     <div>
-        <h4>You are at: {{ app }}!</h4>
+        <h4>Welcome {{ name }}! You are currently at: {{ app }}!</h4>
     </div>
     <div class="content-wrapper">
         <p>‎ </p>
@@ -159,10 +159,14 @@
             <button>Add New Product Entry</button>
         </a>
 
-        <h2>Our Products!</h2>
+        <h2>Our Catalogue!</h2>
+        <h3>Fun Fact!</h3>
+        <p>Did you know that we also have an online store? Why you ask? Because why not!\nYou can also become a seller now a our new platform: PyramidBay!</p>
+        <h4>\nDo Not Worry!</h4>
+        <p>We only tax 100% of your earnings from using our platform! An unprecedented share among the countles other platforms!\n</p>
         <ul>
             {% for product in products %}
-                <li><h4>{{ product.name }}</h4><p>Price = {{ product.price}}$</p><strong>Description</strong><div class="scrollable">{{ product.description |safe |escape}}</div><br><button type="button">Add to cart!</button></li>
+                <li><h4>{{ product.name }}</h4><h4>Seller = {{ product.user.username }}</h4><p>Price = {{ product.price }}$</p><strong>Description</strong><div class="scrollable">{{ product.description |safe |escape}}</div><br><button type="button">Add to cart!</button></li>
             {% endfor %}
         </ul>
         <h3>Your cart:</h3>
@@ -181,7 +185,7 @@
     <p>‎ </p>
     <footer>
         <p>Founded by Pyrami D. Schemer in 2022<br>
-        Website Created by {{ name }} from {{ class }}<br>
+        Website Created by Meinhard Christian from {{ class }}<br>
         Company policies, mottos and products by <strong>ChatGPT</strong></p>
         <p>&copy; 2024 InversePyrramidSchemes. All rights unreserved.</p>
     </footer>

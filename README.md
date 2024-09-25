@@ -1,8 +1,8 @@
 # Checklist Questions
 
-## Tugas 2
-
 Visit website using [this](http:/meinhard-christian-inversepyramidscheme.pbp.cs.ui.ac.id)
+
+## Tugas 2
 
 Checklist:
 
@@ -71,3 +71,42 @@ Karena cara Django berinteraksi dengan database dimodelkan seperti OOP. Setiap d
 ![show_xml_by_id](image-3.png)
 ![show_json](image.png)
 ![show_json_by_id](image-1.png)
+
+## Tugas 4
+
+-Perbedaan antara HttpResponseRedirect() dan redirect() berasal dari kegunaanya. Keduanya digunakan untuk redirect browser pengguna dari satu URL ke URL yang lain namun redirect() bersifat lebih otomatis, dimana HttpResponseRedirect() lebih manual tetapi lebih customizable. Redirect() dapat menerima model/view/url yang akan secara otomatis menjadi HttpResponse pada akhirnya, HttpResponseRedirect() menerima URL saja.
+
+-Model ditambahkan --> user = models.ForeignKey(User, on_delete=models.CASCADE), foreign key beda dengan data field normal karena bersifat many to one dan external (user dapat punya banyak product, user juga dapat memiliki banyak jenis model bukan hanya satu model saja). User dihubungkan dalam metode POST form berdasarkan user yang logged in pada saat mengisi form
+        product_entry = form.save(commit=False)
+        product_entry.user = request.user
+        product_entry.save()
+
+-Authentication adalah untuk menentukan siapa user (dilakukan melalui CSRF Token + Cookies + Username/Password login), Authorization adalah untuk menentukan apa yang bisa dilakukan oleh user, Django menggunakan sistem staff status (bisa dilihat di bagian user /admin) untuk menentukan apakah user adalah admin atau pengguna biasa (dan memiliki kemampuan untuk delete dan manipulasi file diluar submisi form)
+
+-Cookies menyimpan data secara local di browser user, cookies berukuran kecil (beberapa kB saja) dan menyimpan data tentang aktivitas user. Cookies berlaku pada tab berbeda (beda dengan CSRF token) dan hanya hilang saat cookie di delete (dalam kasus ini saat usser logout, dan biasanya jika cookie sudah timeout). Cookies adalah file txt jadi bukan script yang dapat menjalankan malware, tetapi cookies bisa ditarget oleh hacker melalui serangan tertentu.
+
+-Untuk langkah pengerjaan tugas 4:
+    a.  from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+        from django.contrib import messages
+        from django.contrib.auth import authenticate, login, logout
+        from django.contrib.auth.decorators import login_required
+        import datetime
+        from django.http import HttpResponseRedirect
+        from django.urls import reverse
+        // Imports
+    b.  buat view register(request) dan halaman register.html
+        Menggunakan template UserCreationForm Django, redirect ke main jika form valid, klo tidak refresh halaman (error message otomatis ditampilkan seperti username taken/password too short)
+    c.  buat view login_user() dan halaman login.html
+        Menggunakan Authentication Form, tambah cookies last login (menggunakan datetime dan .set_cookie()) dan redirect ke main jika form valid, klo tidak refresh halaman (username/pass salah)
+    d.  buat view logout()
+        Saat logout delete cookie terlebih dahulu, redirect ke halaman login
+    e.  Tambah decorator @login_required untuk show_app() (nama dari view main) agar main tidak dapat diakses tanpa otentikasi dari
+        Auth form/User Creation Form
+    f.  main.html tambahkan bagian kecil yang menunjukan last login, nama user di context show_app sekarang berdasarkan otentikasi user
+    g.  Model product ditambahkan user = models.ForeignKey(User, on_delete=models.CASCADE)
+        view create_product_entry diubahkan untuk menambahkan user berdasarkan authentikasi user
+        Data lama di .db saat makemigrations ditambahkan nilai default untuk field baru user (1, yaitu superuser), jadi semua product entry lama milik superuser ini, dan semua product entry berikutnya akan milik user berbeda. Setelah ini semua, migrate untuk meyimpan perubahan.
+    h.  Setting.py DEBUG di ubah untuk keamanan (hanya True saat bukan production, state production di dapat dari env os)
+    i.  Tambahkan semua View baru ke dalam urls.py:
+        from main.views import register, login_user, logout_user
+    j.  Selain itu saya update main.html untuk menjadi lebih baik dengan css, saya merubahkan situs untuk membuat form product menjadi lebih maksud akal (Menambahkan penampilan nama penjual/user yang upload form)
